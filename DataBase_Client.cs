@@ -5,6 +5,10 @@ using System.Threading.Tasks;
 
 namespace Mongo_DB
 {
+    /// <summary>
+    /// Клиент для работы с Mongo_DB.
+    /// Универсальный, может использоваться в других проектах
+    /// </summary>
     public class DataBase_Client
     {
         private string Mongo_Server_Path;

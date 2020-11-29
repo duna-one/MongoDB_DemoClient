@@ -3,6 +3,9 @@ using System.Windows.Forms;
 
 namespace Mongo_DB
 {
+    /// <summary>
+    /// Класс, описывающий документ
+    /// </summary>
     class Student
     {
         public string Id { get; private set; }
