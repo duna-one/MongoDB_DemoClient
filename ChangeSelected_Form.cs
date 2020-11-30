@@ -67,7 +67,8 @@ namespace Mongo_DB
                 Rows.Pop();
                 return;
             }
-            else // Если стек пуст, то окно закрывается
+            // Если стек пуст, то окно закрывается
+            else
             {
                 Close();
             }
@@ -77,9 +78,6 @@ namespace Mongo_DB
         /// Обработчик события "Нажатие на кномпу "Изменить" "
         /// Вызывает функцию изменения одной конкретной записи
         /// </summary>
-        private void button1_Click(object sender, EventArgs e)
-        {
-            _ = Change();
-        }
+        private void button1_Click(object sender, EventArgs e) => _= Change();
     }
 }

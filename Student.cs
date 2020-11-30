@@ -58,12 +58,12 @@ namespace Mongo_DB
         /// Изменение ФИО
         /// </summary>
         /// <param name="Fullname">Новое ФИО</param>
-        public void Set_FullName(string Fullname) { this.Fullname = Fullname; }
+        public void Set_FullName(string Fullname) => this.Fullname = Fullname; 
         /// <summary>
         /// Изменение логина
         /// </summary>
         /// <param name="Login">Новый логин</param>
-        public void Set_Login(string Login) { this.Login = Login; }
+        public void Set_Login(string Login) => this.Login = Login; 
 
         /// <summary>
         /// Добавляет объект в DataGridView

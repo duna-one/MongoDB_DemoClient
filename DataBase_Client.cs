@@ -35,7 +35,7 @@ namespace Mongo_DB
         /// <param name="CollectionName">Название коллекции</param>
         public async Task AddToCollectionAsync<T>(T Obj, string CollectionName)
         {
-            var Collection = Database.GetCollection<T>(CollectionName);
+            IMongoCollection<T> Collection = Database.GetCollection<T>(CollectionName);
             await Collection.InsertOneAsync(Obj);
         }
 

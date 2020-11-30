@@ -80,19 +80,13 @@ namespace Mongo_DB
         /// Обработчик события "Нажатие на кнопку "Добавить" "
         /// Вызывает функцию добавления новой записи в БД
         /// </summary>
-        private void AddNewStudent_Click(object sender, EventArgs e)
-        {
-            _ = AddNewStudent();
-        }
+        private void AddNewStudent_Click(object sender, EventArgs e) => _ = AddNewStudent();        
 
         /// <summary>
         /// Обработчик события "Нажатие на кнопку "Обновить таблицу" "
         /// Вызывает функцию обновления данных в таблицк
         /// </summary>
-        private void Update_Data(object sender, EventArgs e)
-        {
-            _ = LoadDataFromDB();
-        }
+        private void Update_Data(object sender, EventArgs e) => _ = LoadDataFromDB();
 
         /// <summary>
         /// Обработчик события "Нажатие на кнопку "Изменить выбранное" "
