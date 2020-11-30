@@ -1,7 +1,6 @@
 ﻿using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Mongo_DB
@@ -30,7 +29,7 @@ namespace Mongo_DB
         /// Добавляет информацию в таблицу
         /// Добавляет информацию в БД
         /// </summary>
-        private async Task AddNewStudent()
+        private async void AddNewStudent(object sender, EventArgs e)
         {
             List<Student> students = await dataBase.Get_AllDocs<Student>(Collection_Name);
             Student NewStudent = new Student(students, textBox1.Text, textBox2.Text, textBox3.Text);
@@ -41,13 +40,13 @@ namespace Mongo_DB
             }
 
             NewStudent.AddTo_DataGridView(ref dataGridView1);
-            _ = dataBase.AddToCollectionAsync(NewStudent, Collection_Name);
+            dataBase.AddToCollectionAsync(NewStudent, Collection_Name);
         }
 
         /// <summary>
         /// Получает информацию из базы данных и добавляет ее в таблицу
         /// </summary>
-        private async Task LoadDataFromDB()
+        private async void LoadDataFromDB(object sender, EventArgs e)
         {
             List<Student> students = await dataBase.Get_AllDocs<Student>(Collection_Name);
             dataGridView1.Rows.Clear();
@@ -61,7 +60,7 @@ namespace Mongo_DB
         /// Удаляет выбранные в таблице записи
         /// Удаление происходит в базе данный, затем таблица обновляется функцией LoadDataFromDB()
         /// </summary>
-        private async Task DeleteSelected()
+        private async void DeleteSelected(object sender, EventArgs e)
         {
             DataGridViewSelectedRowCollection SelectedRows = dataGridView1.SelectedRows;
             Student student;
@@ -73,20 +72,8 @@ namespace Mongo_DB
                                       Row.Cells[2].Value.ToString(), Row.Cells[3].Value.ToString());
                 await Collection.DeleteOneAsync(p => p.Id == student.Id);
             } 
-            _= LoadDataFromDB();
+            LoadDataFromDB(sender, e);
         }
-
-        /// <summary>
-        /// Обработчик события "Нажатие на кнопку "Добавить" "
-        /// Вызывает функцию добавления новой записи в БД
-        /// </summary>
-        private void AddNewStudent_Click(object sender, EventArgs e) => _ = AddNewStudent();        
-
-        /// <summary>
-        /// Обработчик события "Нажатие на кнопку "Обновить таблицу" "
-        /// Вызывает функцию обновления данных в таблицк
-        /// </summary>
-        private void Update_Data(object sender, EventArgs e) => _ = LoadDataFromDB();
 
         /// <summary>
         /// Обработчик события "Нажатие на кнопку "Изменить выбранное" "
@@ -99,17 +86,8 @@ namespace Mongo_DB
 
             ChangeSelected_Form changeSelected_Form = new ChangeSelected_Form(ref dataBase, dataGridView1.SelectedRows, Collection_Name);
             changeSelected_Form.ShowDialog();
-            _ = LoadDataFromDB();
+            LoadDataFromDB(sender, e);
         }
 
-        /// <summary>
-        /// Обработчик события "Нажатие на кнопку "Удалить выбранное" "
-        /// Вызывает функцию удаления выбранных записей DeleteSelected()
-        /// </summary>
-        private void DeleteSelected_Click(object sender, EventArgs e)
-        {
-            if (dataGridView1.SelectedRows.Count == 0) { return; } // Проверка на наличие выбранных записей
-            _ = DeleteSelected();
-        }
     }
 }

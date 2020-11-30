@@ -1,7 +1,6 @@
 ﻿using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Mongo_DB
@@ -43,9 +42,10 @@ namespace Mongo_DB
         }
 
         /// <summary>
+        /// Обработчик события "Нажатие на кномпу "Изменить" "
         /// Функция изменения конкретной записи в БД
         /// </summary>
-        private async Task Change()
+        private async void Change(object sender, EventArgs e)
         {
             Student student = new Student(Id, textBox1.Text, textBox2.Text, textBox3.Text);
             List<Student> students = await dataBase.Get_AllDocs<Student>(Collection_Name);
@@ -73,11 +73,5 @@ namespace Mongo_DB
                 Close();
             }
         }
-
-        /// <summary>
-        /// Обработчик события "Нажатие на кномпу "Изменить" "
-        /// Вызывает функцию изменения одной конкретной записи
-        /// </summary>
-        private void button1_Click(object sender, EventArgs e) => _= Change();
     }
 }

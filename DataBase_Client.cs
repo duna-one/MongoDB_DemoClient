@@ -33,7 +33,7 @@ namespace Mongo_DB
         /// <typeparam name="T">Тип добавляемого объекта</typeparam>
         /// <param name="Obj">Добавляемый объект</param>
         /// <param name="CollectionName">Название коллекции</param>
-        public async Task AddToCollectionAsync<T>(T Obj, string CollectionName)
+        public async void AddToCollectionAsync<T>(T Obj, string CollectionName)
         {
             IMongoCollection<T> Collection = Database.GetCollection<T>(CollectionName);
             await Collection.InsertOneAsync(Obj);

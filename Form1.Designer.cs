@@ -121,7 +121,7 @@ namespace Mongo_DB
             this.button1.TabIndex = 6;
             this.button1.Text = "Добавить";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.AddNewStudent_Click);
+            this.button1.Click += new System.EventHandler(this.AddNewStudent);
             // 
             // textBox3
             // 
@@ -189,7 +189,7 @@ namespace Mongo_DB
             this.button3.TabIndex = 3;
             this.button3.Text = "Удалить выделенную запись";
             this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.DeleteSelected_Click);
+            this.button3.Click += new System.EventHandler(this.DeleteSelected);
             // 
             // button4
             // 
@@ -199,7 +199,7 @@ namespace Mongo_DB
             this.button4.TabIndex = 4;
             this.button4.Text = "Обновить таблицу";
             this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.Update_Data);
+            this.button4.Click += new System.EventHandler(this.LoadDataFromDB);
             // 
             // Form1
             // 
@@ -215,7 +215,7 @@ namespace Mongo_DB
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Mongo_DB";
-            this.Load += new System.EventHandler(this.Update_Data);
+            this.Load += new System.EventHandler(this.LoadDataFromDB);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
